@@ -4,6 +4,7 @@ namespace HomeControlAPI.Abstractions
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
+        IEnumerable<T> GetAll();
         void Add(T toAdd);
         void Remove(T entity);
 

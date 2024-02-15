@@ -36,5 +36,10 @@ namespace HomeControlAPI.DataAccess.Repositories
         {
             return await _dbContext.SaveChangesAsync() > 0;
         }
+
+        public IEnumerable<T> GetAll()
+        {
+            return dbSet;
+        }
     }
 }

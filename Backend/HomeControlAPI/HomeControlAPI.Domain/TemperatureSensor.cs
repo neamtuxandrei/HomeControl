@@ -11,9 +11,15 @@ namespace HomeControlAPI.Domain
 
         private TemperatureSensor() { }
 
-        public static TemperatureSensor Create()
+        public static TemperatureSensor Create(decimal temperature,TemperatureUnit unit,string location,DateTime lastUpdateTime)
         {
-            return new TemperatureSensor();
+            return new TemperatureSensor
+            {
+                Temperature = temperature,
+                Unit = unit,
+                Location = location,
+                LastUpdateTime = lastUpdateTime
+            };
         }
 
         public void ConvertUnitToCelsius()
