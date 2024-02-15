@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HomeControlAPI.Domain\HomeControlAPI.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

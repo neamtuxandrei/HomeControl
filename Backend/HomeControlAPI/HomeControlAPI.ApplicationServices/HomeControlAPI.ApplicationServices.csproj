@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HomeControlAPI.Abstractions\HomeControlAPI.Abstractions.csproj" />
+    <ProjectReference Include="..\HomeControlAPI.ApplicationServices.Abstractions\HomeControlAPI.ApplicationServices.Abstractions.csproj" />
+    <ProjectReference Include="..\HomeControlAPI.DataAccess\HomeControlAPI.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
