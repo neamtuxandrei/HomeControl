@@ -360,3 +360,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Backend/HomeControlAPI/HomeControlAPI/firstrun.flag
+/.gitignore
