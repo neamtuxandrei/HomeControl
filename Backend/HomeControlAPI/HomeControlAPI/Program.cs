@@ -57,4 +57,31 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 
+
+bool isFirstRun = !File.Exists("firstrun.flag");
+if (isFirstRun)
+{
+    // to initiate migrations and seed data every time the app is built.
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var homeControlDbContext = services.GetRequiredService<HomeControlDbContext>();
+        var applicationDbContext = services.GetRequiredService<ApplicationDbContext>();
+        //RoleManager<IdentityRole> roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        try
+        {
+            await homeControlDbContext.Database.MigrateAsync();
+            await applicationDbContext.Database.MigrateAsync();
+
+            await HomeControlSeedData.SeedDataAsync(homeControlDbContext);
+
+            File.WriteAllText("firstrun.flag", "Migration and seeding completed.");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+}
+
 app.Run();
