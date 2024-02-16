@@ -18,7 +18,6 @@ namespace HomeControlAPI.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<TemperatureSensor>))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequest))]
         [SwaggerOperation(Summary = "Returns all of the temperature sensors.")]
         public async Task<IActionResult> GetAllTemperatureSensors()
         {
@@ -29,14 +28,13 @@ namespace HomeControlAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TemperatureSensor))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFound))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequest))]
         [SwaggerOperation(Summary = "Returns temperature sensor by id")]
         public async Task<IActionResult> GetTemperatureSensor([FromRoute]Guid id)
         {
@@ -48,11 +46,11 @@ namespace HomeControlAPI.Controllers
             }
             catch (InvalidOperationException)
             {
-                return NotFound("Could not find any temperature sensor with this id.");
+                return NotFound("Device not found.");
             } 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                throw new Exception(ex.Message);
             }
 
         }

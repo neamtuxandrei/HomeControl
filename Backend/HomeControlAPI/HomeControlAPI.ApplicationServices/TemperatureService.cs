@@ -31,7 +31,7 @@ namespace HomeControlAPI.ApplicationServices
         {
             TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
             if (temperatureSensor == null)
-                throw new ArgumentException("This sensor wasn't found.");
+                throw new InvalidOperationException();
 
             return temperatureSensor;
         }
@@ -42,7 +42,7 @@ namespace HomeControlAPI.ApplicationServices
         {
             TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
             if(temperatureSensor == null)
-                throw new ArgumentException("This device wasn't found.");
+                throw new InvalidOperationException();
 
             _temperatureRepository.Remove(temperatureSensor);
             await _temperatureRepository.SaveChangesAsync();
@@ -54,7 +54,7 @@ namespace HomeControlAPI.ApplicationServices
         {
             TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
             if (temperatureSensor == null)
-                throw new ArgumentException("This device wasn't found.");
+                throw new InvalidOperationException();
 
             temperatureSensor.Temperature = value;
             temperatureSensor.Unit = unit;
