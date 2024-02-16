@@ -1,5 +1,6 @@
 using HomeControlAPI.Data;
 using HomeControlAPI.DataAccess;
+using HomeControlAPI.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -26,6 +27,9 @@ builder.Services.AddControllersWithViews()
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// dependency injection
+builder.Services.RegisterApplication();
 
 var app = builder.Build();
 

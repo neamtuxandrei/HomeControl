@@ -3,10 +3,10 @@ using HomeControlAPI.Domain;
 
 namespace HomeControlAPI.DataAccess.Repositories
 {
-    public class TemperatureSensorRepository : BaseRepository<TemperatureSensor>, ITemperatureRepository
+    public class TemperatureRepository : BaseRepository<TemperatureSensor>, ITemperatureRepository
     {
         private readonly HomeControlDbContext _dbContext; 
-        public TemperatureSensorRepository(HomeControlDbContext dbContext) : base(dbContext)
+        public TemperatureRepository(HomeControlDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }

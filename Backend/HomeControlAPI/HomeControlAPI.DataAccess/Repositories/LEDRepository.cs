@@ -3,10 +3,10 @@ using HomeControlAPI.Domain;
 
 namespace HomeControlAPI.DataAccess.Repositories
 {
-    public class LEDSensorRepository : BaseRepository<LEDSensor>, ILEDRepository
+    public class LEDRepository : BaseRepository<LEDSensor>, ILEDRepository
     {
         private readonly HomeControlDbContext _dbContext;
-        public LEDSensorRepository(HomeControlDbContext dbContext) : base(dbContext)
+        public LEDRepository(HomeControlDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }

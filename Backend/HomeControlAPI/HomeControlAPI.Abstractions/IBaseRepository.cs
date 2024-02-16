@@ -4,12 +4,12 @@ namespace HomeControlAPI.Abstractions
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
-        IEnumerable<T> GetAll();
+        Task<List<T>> GetAll();
         void Add(T toAdd);
         void Remove(T entity);
 
         void Update(T entity);
-        T? GetById(Guid id);
+        Task<T?> GetById(Guid id);
         Task<bool> SaveChangesAsync();
     }
 }

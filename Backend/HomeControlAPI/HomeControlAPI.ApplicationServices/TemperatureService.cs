@@ -22,16 +22,16 @@ namespace HomeControlAPI.ApplicationServices
 
         }
 
-        public IEnumerable<TemperatureSensor> GetAll()
+        public async Task<List<TemperatureSensor>> GetAll()
         {
-            return _temperatureRepository.GetAll();
+            return await _temperatureRepository.GetAll();
         }
 
-        public TemperatureSensor GetTemperatureSensor(Guid id)
+        public async Task<TemperatureSensor> GetTemperatureSensor(Guid id)
         {
-            TemperatureSensor? temperatureSensor = _temperatureRepository.GetById(id);
+            TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
             if (temperatureSensor == null)
-                throw new ArgumentException("This device wasn't found.");
+                throw new ArgumentException("This sensor wasn't found.");
 
             return temperatureSensor;
         }
@@ -40,7 +40,7 @@ namespace HomeControlAPI.ApplicationServices
 
         public async Task RemoveTemperatureSensor(Guid id)
         {
-            TemperatureSensor? temperatureSensor = _temperatureRepository.GetById(id);
+            TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
             if(temperatureSensor == null)
                 throw new ArgumentException("This device wasn't found.");
 
@@ -52,7 +52,7 @@ namespace HomeControlAPI.ApplicationServices
 
         public async Task UpdateTemperatureSensor(Guid id, decimal value, TemperatureUnit unit, string location)
         {
-            TemperatureSensor? temperatureSensor = _temperatureRepository.GetById(id);
+            TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
             if (temperatureSensor == null)
                 throw new ArgumentException("This device wasn't found.");
 

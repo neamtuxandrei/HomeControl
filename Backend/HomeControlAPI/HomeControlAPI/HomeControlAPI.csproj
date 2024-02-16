@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HomeControlAPI.ApplicationServices.Abstractions\HomeControlAPI.ApplicationServices.Abstractions.csproj" />
+    <ProjectReference Include="..\HomeControlAPI.ApplicationServices\HomeControlAPI.ApplicationServices.csproj" />
     <ProjectReference Include="..\HomeControlAPI.DataAccess\HomeControlAPI.DataAccess.csproj" />
   </ItemGroup>
 

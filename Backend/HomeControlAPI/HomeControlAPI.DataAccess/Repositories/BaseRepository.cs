@@ -18,9 +18,9 @@ namespace HomeControlAPI.DataAccess.Repositories
             dbSet.Add(toAdd);
         }
 
-        public T? GetById(Guid id)
+        public async Task<T?> GetById(Guid id)
         {
-            return dbSet.FirstOrDefault(x => x.Id == id);
+            return await dbSet.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public void Remove(T entity)
@@ -37,9 +37,9 @@ namespace HomeControlAPI.DataAccess.Repositories
             return await _dbContext.SaveChangesAsync() > 0;
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<List<T>> GetAll()
         {
-            return dbSet;
+            return await dbSet.ToListAsync();
         }
     }
 }
