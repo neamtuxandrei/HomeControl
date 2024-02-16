@@ -11,14 +11,14 @@ namespace HomeControlAPI.Domain
 
         private TemperatureSensor() { }
 
-        public static TemperatureSensor Create(decimal temperature,TemperatureUnit unit,string location,DateTime lastUpdateTime)
+        public static TemperatureSensor Create(decimal temperature,TemperatureUnit unit,string location)
         {
             return new TemperatureSensor
             {
                 Temperature = temperature,
                 Unit = unit,
                 Location = location,
-                LastUpdateTime = lastUpdateTime
+                LastUpdateTime = DateTime.UtcNow
             };
         }
 

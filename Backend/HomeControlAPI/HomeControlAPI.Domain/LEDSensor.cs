@@ -10,9 +10,14 @@ namespace HomeControlAPI.Domain
 
         private LEDSensor() { }
 
-        public static LEDSensor Create()
+        public static LEDSensor Create(string location)
         {
-            return new LEDSensor();
+            return new LEDSensor()
+            {
+                Status = Status.Off,
+                Brightness = 0,
+                Location = location
+            };
         }
             
     }

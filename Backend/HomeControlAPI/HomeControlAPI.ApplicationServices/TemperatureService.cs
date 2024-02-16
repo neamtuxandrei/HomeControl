@@ -12,9 +12,9 @@ namespace HomeControlAPI.ApplicationServices
         {
             _temperatureRepository = temperatureRepository;
         }
-        public async Task AddTemperatureSensor(decimal value, TemperatureUnit unit, string location, DateTime lastUpdateTime)
+        public async Task AddTemperatureSensor(decimal value, TemperatureUnit unit, string location)
         {
-            TemperatureSensor temperatureSensor = TemperatureSensor.Create(value, unit, location, lastUpdateTime);
+            TemperatureSensor temperatureSensor = TemperatureSensor.Create(value, unit, location);
             _temperatureRepository.Add(temperatureSensor);
             await _temperatureRepository.SaveChangesAsync();
 
