@@ -48,7 +48,7 @@ namespace HomeControlAPI.ApplicationServices
             // _logger.log Remove with id ...
         }
 
-        public async Task<TemperatureSensor> UpdateTemperatureSensor(Guid id, decimal value, TemperatureUnit unit, string location)
+        public async Task<TemperatureSensor> UpdateTemperatureSensor(Guid id, decimal value, TemperatureUnit unit)
         {
             TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
             if (temperatureSensor == null)
@@ -56,7 +56,6 @@ namespace HomeControlAPI.ApplicationServices
 
             temperatureSensor.Temperature = value;
             temperatureSensor.Unit = unit;
-            temperatureSensor.Location = location;
             temperatureSensor.LastUpdateTime = DateTime.UtcNow;
 
             _temperatureRepository.Update(temperatureSensor);

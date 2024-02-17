@@ -3,29 +3,31 @@ using HomeControlAPI.DataObjects;
 using HomeControlAPI.Domain;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace HomeControlAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TemperatureController : ControllerBase
+    public class LEDController : ControllerBase
     {
-        private readonly ITemperatureService _temperatureService;
-        public TemperatureController(ITemperatureService temperatureService)
+        private readonly ILEDService _ledService;
+
+        public LEDController(ILEDService ledService)
         {
-            _temperatureService = temperatureService;
+            _ledService = ledService;
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<TemperatureSensor>))]
-        [SwaggerOperation(Summary = "Returns all temperature sensors.")]
-        public async Task<IActionResult> GetAllTemperatureSensors()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<LEDSensor>))]
+        [SwaggerOperation(Summary = "Returns all LEDs.")]
+        public async Task<IActionResult> GetAllLEDs()
         {
             try
             {
-                var temperatureSensors = await _temperatureService.GetAll();
-                return Ok(temperatureSensors);
+                var leds = await _ledService.GetAll();
+                return Ok(leds);
             }
             catch (Exception ex)
             {
@@ -34,19 +36,19 @@ namespace HomeControlAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(TemperatureSensor))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LEDSensor))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFound))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequest))]
-        [SwaggerOperation(Summary = "Returns temperature sensor by id.")]
-        public async Task<IActionResult> GetTemperatureSensor([FromRoute] Guid id)
+        [SwaggerOperation(Summary = "Returns LED by id.")]
+        public async Task<IActionResult> GetLED([FromRoute] Guid id)
         {
             if (id == Guid.Empty)
                 return BadRequest("Device id can't be empty.");
             try
             {
-                var temperatureSensor = await _temperatureService.GetTemperatureSensor(id);
+                var led = await _ledService.GetLEDSensor(id);
 
-                return Ok(temperatureSensor);
+                return Ok(led);
             }
             catch (InvalidOperationException)
             {
@@ -62,14 +64,14 @@ namespace HomeControlAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Ok))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFound))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequest))]
-        [SwaggerOperation(Summary = "Removes temperature sensor by id.")]
-        public async Task<IActionResult> RemoveTemperatureSensor([FromRoute] Guid id)
+        [SwaggerOperation(Summary = "Removes LED by id.")]
+        public async Task<IActionResult> RemoveLED([FromRoute] Guid id)
         {
             if (id == Guid.Empty)
                 return BadRequest("Device id can't be empty.");
             try
             {
-                await _temperatureService.RemoveTemperatureSensor(id);
+                await _ledService.RemoveLEDSensor(id);
                 return Ok("Device removed successfully.");
             }
             catch (InvalidOperationException)
@@ -86,15 +88,15 @@ namespace HomeControlAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Ok))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(NotFound))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequest))]
-        [SwaggerOperation(Summary = "Updates temperature sensor.")]
-        public async Task<IActionResult> UpdateTemperatureSensor([FromRoute] Guid id, [FromBody] UpdateTemperatureDTO value)
+        [SwaggerOperation(Summary = "Updates LED's state.")]
+        public async Task<IActionResult> UpdateLED([FromRoute] Guid id, [FromBody] UpdateLEDDTO value)
         {
             if (id == Guid.Empty)
-                return BadRequest("Device id can't be empty");
+                return BadRequest("Device id can't be empty.");
             try
             {
-                var temperatureSensor = await _temperatureService.UpdateTemperatureSensor(id, value.Temperature, (Domain.Enums.TemperatureUnit)value.Unit);
-                return Ok(temperatureSensor);
+                var led = await _ledService.UpdateLEDSensor(id, (Domain.Enums.Status)value.Status, value.Brightness);
+                return Ok(led);
             }
             catch (InvalidOperationException)
             {
@@ -108,20 +110,18 @@ namespace HomeControlAPI.Controllers
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Created))]
-        [SwaggerOperation(Summary = "Creates a new temperature sensor.")]
-        public async Task<IActionResult> AddTemperatureSensor([FromBody] AddTemperatureDTO value)
+        [SwaggerOperation(Summary = "Creates a new LED.")]
+        public async Task<IActionResult> AddLED([FromBody] AddLEDDTO value)
         {
             try
             {
-                var temperatureSensor = await _temperatureService.AddTemperatureSensor(value.Temperature, (Domain.Enums.TemperatureUnit)value.Unit, value.Location);
-                return Created("Created", temperatureSensor);
+                var led = await _ledService.AddLEDSensor(value.Location);
+                return Created("Created", led);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-
-
     }
 }

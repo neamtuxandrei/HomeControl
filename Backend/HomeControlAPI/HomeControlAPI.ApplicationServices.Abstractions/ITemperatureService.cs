@@ -9,6 +9,6 @@ namespace HomeControlAPI.ApplicationServices.Abstractions
         Task<TemperatureSensor> GetTemperatureSensor(Guid id);
         Task<TemperatureSensor> AddTemperatureSensor(decimal value, TemperatureUnit unit, string location);
         Task RemoveTemperatureSensor(Guid id);
-        Task<TemperatureSensor> UpdateTemperatureSensor(Guid id, decimal value, TemperatureUnit unit, string location);
+        Task<TemperatureSensor> UpdateTemperatureSensor(Guid id, decimal value, TemperatureUnit unit);
     }
 }
