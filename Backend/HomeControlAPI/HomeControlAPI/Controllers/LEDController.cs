@@ -8,7 +8,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace HomeControlAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("devices/[controller]")]
     [ApiController]
     public class LEDController : ControllerBase
     {
