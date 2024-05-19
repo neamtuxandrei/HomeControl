@@ -12,14 +12,14 @@ namespace HomeControlAPI.ApplicationServices
         {
             _temperatureRepository = temperatureRepository;
         }
-        public async Task AddTemperatureSensor(decimal value, TemperatureUnit unit, string location)
+        public async Task<TemperatureSensor> AddTemperatureSensor(decimal value, TemperatureUnit unit, string location)
         {
             TemperatureSensor temperatureSensor = TemperatureSensor.Create(value, unit, location);
             _temperatureRepository.Add(temperatureSensor);
             await _temperatureRepository.SaveChangesAsync();
 
+            return temperatureSensor;
             // _logger.log Inserted with id : ... 
-
         }
 
         public async Task<List<TemperatureSensor>> GetAll()
@@ -36,8 +36,6 @@ namespace HomeControlAPI.ApplicationServices
             return temperatureSensor;
         }
 
-        
-
         public async Task RemoveTemperatureSensor(Guid id)
         {
             TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
@@ -50,7 +48,7 @@ namespace HomeControlAPI.ApplicationServices
             // _logger.log Remove with id ...
         }
 
-        public async Task UpdateTemperatureSensor(Guid id, decimal value, TemperatureUnit unit, string location)
+        public async Task<TemperatureSensor> UpdateTemperatureSensor(Guid id, decimal value, TemperatureUnit unit)
         {
             TemperatureSensor? temperatureSensor = await _temperatureRepository.GetById(id);
             if (temperatureSensor == null)
@@ -58,11 +56,12 @@ namespace HomeControlAPI.ApplicationServices
 
             temperatureSensor.Temperature = value;
             temperatureSensor.Unit = unit;
-            temperatureSensor.Location = location;
             temperatureSensor.LastUpdateTime = DateTime.UtcNow;
 
             _temperatureRepository.Update(temperatureSensor);
             await _temperatureRepository.SaveChangesAsync();
+
+            return temperatureSensor;
 
             // _logger.log Temperature updated.
         }

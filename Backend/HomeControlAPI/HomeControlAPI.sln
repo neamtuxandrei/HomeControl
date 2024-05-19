@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControlAPI", "HomeControlAPI\HomeControlAPI.csproj", "{5EA9425A-FE2C-404C-9BD1-DD8E5B35CE0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeControlAPI", "HomeControlAPI\HomeControlAPI.csproj", "{5EA9425A-FE2C-404C-9BD1-DD8E5B35CE0F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1D211C57-E8B4-4320-AC95-C1A85316244A}"
 EndProject
@@ -11,15 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationServices", "ApplicationServices", "{04341B61-7068-475A-9C49-B3F5887E8A39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControlAPI.Domain", "HomeControlAPI.Domain\HomeControlAPI.Domain.csproj", "{E9AFE796-D269-4A94-8205-849B60994749}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeControlAPI.Domain", "HomeControlAPI.Domain\HomeControlAPI.Domain.csproj", "{E9AFE796-D269-4A94-8205-849B60994749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControlAPI.Abstractions", "HomeControlAPI.Abstractions\HomeControlAPI.Abstractions.csproj", "{69A5EBD7-0388-4D18-B670-764AE20FCCEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeControlAPI.Abstractions", "HomeControlAPI.Abstractions\HomeControlAPI.Abstractions.csproj", "{69A5EBD7-0388-4D18-B670-764AE20FCCEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControlAPI.DataAccess", "HomeControlAPI.DataAccess\HomeControlAPI.DataAccess.csproj", "{D9230DEB-F750-460D-BF86-D32D6684DD8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeControlAPI.DataAccess", "HomeControlAPI.DataAccess\HomeControlAPI.DataAccess.csproj", "{D9230DEB-F750-460D-BF86-D32D6684DD8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControlAPI.ApplicationServices", "HomeControlAPI.ApplicationServices\HomeControlAPI.ApplicationServices.csproj", "{93BD047D-528F-4CDA-8DC1-BCECE909FEFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeControlAPI.ApplicationServices", "HomeControlAPI.ApplicationServices\HomeControlAPI.ApplicationServices.csproj", "{93BD047D-528F-4CDA-8DC1-BCECE909FEFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControlAPI.ApplicationServices.Abstractions", "HomeControlAPI.ApplicationServices.Abstractions\HomeControlAPI.ApplicationServices.Abstractions.csproj", "{9BA5D18C-4150-493B-8AFE-EA074749962D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeControlAPI.ApplicationServices.Abstractions", "HomeControlAPI.ApplicationServices.Abstractions\HomeControlAPI.ApplicationServices.Abstractions.csproj", "{9BA5D18C-4150-493B-8AFE-EA074749962D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControlAPI.DataObjects", "HomeControlAPI.DataObjects\HomeControlAPI.DataObjects.csproj", "{8FD86A25-78D8-4B1B-8895-3937AEE4E483}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{9BA5D18C-4150-493B-8AFE-EA074749962D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BA5D18C-4150-493B-8AFE-EA074749962D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BA5D18C-4150-493B-8AFE-EA074749962D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD86A25-78D8-4B1B-8895-3937AEE4E483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD86A25-78D8-4B1B-8895-3937AEE4E483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD86A25-78D8-4B1B-8895-3937AEE4E483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD86A25-78D8-4B1B-8895-3937AEE4E483}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{D9230DEB-F750-460D-BF86-D32D6684DD8E} = {E84D821C-4834-4725-80CA-2EB086201E87}
 		{93BD047D-528F-4CDA-8DC1-BCECE909FEFC} = {04341B61-7068-475A-9C49-B3F5887E8A39}
 		{9BA5D18C-4150-493B-8AFE-EA074749962D} = {04341B61-7068-475A-9C49-B3F5887E8A39}
+		{8FD86A25-78D8-4B1B-8895-3937AEE4E483} = {04341B61-7068-475A-9C49-B3F5887E8A39}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F7C5E82-D049-4F7B-96FF-37188BE6F50B}

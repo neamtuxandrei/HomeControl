@@ -4,6 +4,7 @@ namespace HomeControlAPI.Domain
 {
     public class LEDSensor : BaseEntity
     {
+        // test
         public Status Status{ get; set; }
         public int Brightness { get; set; } // from 0 to 100.
         public string Location { get; set; } = string.Empty;

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
   </ItemGroup>
@@ -21,6 +22,7 @@
     <ProjectReference Include="..\HomeControlAPI.ApplicationServices.Abstractions\HomeControlAPI.ApplicationServices.Abstractions.csproj" />
     <ProjectReference Include="..\HomeControlAPI.ApplicationServices\HomeControlAPI.ApplicationServices.csproj" />
     <ProjectReference Include="..\HomeControlAPI.DataAccess\HomeControlAPI.DataAccess.csproj" />
+    <ProjectReference Include="..\HomeControlAPI.DataObjects\HomeControlAPI.DataObjects.csproj" />
   </ItemGroup>
 
 </Project>
